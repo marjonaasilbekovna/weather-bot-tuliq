@@ -14,7 +14,7 @@ def weather(City):
     namlik = current_weather["main"]["humidity"]
     wind = current_weather["wind"]["speed"]
 
-
+    city = City
 
     return f"Ob-havo : {temp}°\nNamlik: {namlik} % \nShamol: sekundiga {wind} m/s"
 

@@ -38,12 +38,12 @@ menu = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(text="Zarafshon", callback_data="zarafshan"),
-            InlineKeyboardButton(text="Urgench", callback_data="urgench")
+            InlineKeyboardButton(text="Urganch", callback_data="urgench")
         ],
         [
             InlineKeyboardButton(text="Xiva", callback_data="khiva"),
             InlineKeyboardButton(text="Sirdaryo", callback_data="sirdaryo")
-        ],
+        ],  
         [
             InlineKeyboardButton(text="Termiz", callback_data="termiz"),
             InlineKeyboardButton(text="Nukus", callback_data="nukus")
@@ -54,7 +54,25 @@ menu = InlineKeyboardMarkup(
 sozlama = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="O'zgartirish", callback_data="change"), 
+            InlineKeyboardButton(text="O'zgartirish 🔁", callback_data="change"),
+            InlineKeyboardButton(text="Eslatma ⏰", callback_data="eslatma")
+        ]
+    ]
+)
+
+
+
+
+eslatish = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text="Bir kunlik", callback_data="bir"), 
+            InlineKeyboardButton(text="Uch kunlik", callback_data="uch"),
+            InlineKeyboardButton(text="Besh kunlik", callback_data="besh"),
+            InlineKeyboardButton(text="Bir haftalik", callback_data="hafta")
+        ],
+
+        [    InlineKeyboardButton(text="Orqaga 🔙", callback_data="back")
         ]
     ]
 )

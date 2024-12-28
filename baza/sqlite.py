@@ -1,6 +1,5 @@
 import sqlite3
 
-
 class Database:
     def __init__(self, path_to_db="main.db"):
         self.path_to_db = path_to_db
@@ -17,7 +16,6 @@ class Database:
         cursor = connection.cursor()
         data = None
         cursor.execute(sql, parameters)
-
         if commit:
             connection.commit()
         if fetchall:
@@ -30,9 +28,12 @@ class Database:
     def create_table_users(self):
         sql = """
         CREATE TABLE IF NOT EXISTS USERS(
-        full_name TEXT,
-        telegram_id NUMBER unique );
-              """
+            full_name TEXT,
+            telegram_id NUMBER UNIQUE,
+            vaqt TEXT,
+            city TEXT
+        );
+        """
         self.execute(sql, commit=True)
 
     @staticmethod
@@ -42,14 +43,11 @@ class Database:
         ])
         return sql, tuple(parameters.values())
 
-
-    def add_user(self, telegram_id:int, full_name:str):
-
+    def add_user(self, telegram_id: int, full_name: str, city: str, vaqt: str):
         sql = """
-        INSERT INTO Users(telegram_id, full_name) VALUES(?, ?);
+        INSERT INTO Users(telegram_id, full_name, city, "vaqt") VALUES(?, ?, ?, ?);
         """
-        self.execute(sql, parameters=(telegram_id, full_name), commit=True)
-
+        self.execute(sql, parameters=(telegram_id, full_name, city, vaqt), commit=True)
 
     def select_all_users(self):
         sql = """
@@ -57,28 +55,24 @@ class Database:
         """
         return self.execute(sql, fetchall=True)
 
-
     def select_user(self, **kwargs):
-        sql = "SELECT * FROM Users WHERE;"
+        sql = "SELECT * FROM Users WHERE "
         sql, parameters = self.format_args(sql, kwargs)
-
         return self.execute(sql, parameters=parameters, fetchone=True)
 
     def count_users(self):
         return self.execute("SELECT COUNT(*) FROM Users;", fetchone=True)
 
-
     def delete_users(self):
         self.execute("DELETE FROM Users WHERE TRUE;", commit=True)
-    
+
     def all_users_id(self):
         return self.execute("SELECT telegram_id FROM Users;", fetchall=True)
-    
 
 
 def logger(statement):
     print(f"""
-_____________________________________________________        
+_____________________________________________________
 Executing: 
 {statement}
 _____________________________________________________
