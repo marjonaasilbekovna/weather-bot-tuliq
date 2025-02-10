@@ -18,6 +18,8 @@ async def weather_info(callback_query: CallbackQuery, state: FSMContext):
     selected_city = callback_query.data
     user_id = callback_query.from_user.id
 
+    await callback_query.message.delete()
+
     # Shaharni state-ga saqlaymiz
     await state.update_data(selected_city=selected_city)
 
@@ -29,12 +31,13 @@ async def weather_info(callback_query: CallbackQuery, state: FSMContext):
 
 @dp.callback_query(F.data=="eslatma")
 async def change_code(callback_query:CallbackQuery):
+    await callback_query.message.delete()
     await callback_query.message.answer("🤖 Ob-havo ma'lumotlarini eslatib turish uchun eslatma turini tugmalardan tanlang. !", reply_markup=eslatish)
-
 
 #  bugungi ob havoni eslatish
 @dp.callback_query(F.data == "bir")
 async def hozir_eslatma(callback_query: CallbackQuery):
+    await callback_query.message.delete()
     await callback_query.message.answer(
         "⚙️ Sizga ob-havo ma'lumotlarini eslatib turishimiz uchun vaqtni to'g'ri formatda kiriting !\nmasalan: 20:00:00"
     )
@@ -64,6 +67,7 @@ async def timer(message: Message, state: FSMContext):
 # 3 kunlik ob-havo eslatmasi kodi
 @dp.callback_query(F.data == "uch")
 async def eslatma_3kun(callback_query: CallbackQuery):
+    await callback_query.message.delete()
     await callback_query.message.answer(
         "⚙️ Sizga 3 kun davomida ob-havo ma'lumotlarini eslatib turishimiz uchun vaqtni to'g'ri formatda kiriting\nmasalan: 20:00:00"
     )
@@ -98,6 +102,7 @@ async def timer_3kun(message: Message, state: FSMContext):
 # 5 kunlik ob-havo eslatmasi kodi
 @dp.callback_query(F.data == "besh")
 async def eslatma_5kun(callback_query: CallbackQuery):
+    await callback_query.message.delete()
     await callback_query.message.answer(
         "⚙️ Sizga 5 kun davomida ob-havo ma'lumotlarini eslatib turishimiz uchun vaqtni to'g'ri formatda kiriting\nmasalan: 20:00:00"
     )
@@ -131,6 +136,7 @@ async def timer_5kun(message: Message, state: FSMContext):
 # Bir haftalik ob-havo eslatmasi uchun vaqtni so'rash
 @dp.callback_query(F.data == "hafta")
 async def eslatma_hafta(callback_query: CallbackQuery):
+    await callback_query.message.delete()
     await callback_query.message.answer(
         "⚙️ Sizga 7 kun davomida ob-havo ma'lumotlarini eslatib turishimiz uchun vaqtni to'g'ri formatda kiriting\nmasalan: 20:00:00"
     )
@@ -166,10 +172,12 @@ async def timer_hafta(message: Message, state: FSMContext):
 
 @dp.callback_query(F.data=="back")
 async def change_code(callback_query:CallbackQuery):
+    await callback_query.message.delete()
     await callback_query.message.answer("Shaharni tanlang", reply_markup=menu)
 
 
 
 @dp.callback_query(F.data=="change")
 async def change_code(callback_query:CallbackQuery):
+    await callback_query.message.delete()
     await callback_query.message.answer("Shahar dan birini tanlang", reply_markup=menu)
