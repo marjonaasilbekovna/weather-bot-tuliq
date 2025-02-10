@@ -16,5 +16,5 @@ def weather(City):
 
     city = City
 
-    return f"Ob-havo : {temp}°\nNamlik: {namlik} % \nShamol: sekundiga {wind} m/s"
+    return f"🌞 Havo harorati : {temp}°\n🌦️ Namlik: {namlik} % \n🍃 Shamol: sekundiga {wind} m/s"
 
