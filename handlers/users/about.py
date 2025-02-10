@@ -5,5 +5,30 @@ from aiogram.filters import Command
 #about commands
 @dp.message(Command("about"))
 async def about_commands(message:Message):
-    await message.answer("Bu 'Ob-havo' boti bo'lib, bu bot orqali siz o'z viloyatingiz haqida ob-havo ma'lumotini tez va oson topishungiz mumkin bo'ladi.\n\nBu bot 'Sifatedu' o'quv markazi o'quvchilari tomonidan yaratilgan.")
+    await message.answer("""
+Bizni tanlaganingizdan hursandmiz.
+                         
+✨ Ob-havo Botiga Xush Kelibsiz! ✨
+🌦 Bu bot haqida:
+                         
+🔹 Sizning viloyatingiz va atrof-muhit haqidagi ob-havo ma’lumotlarini tez va oson yetkazib beruvchi ;
+🔹 Zamonaviy va ishonchli xizmat ;
+                         
 
+💡 Ushbu bot  'Sifatedu'  o'quv markazi o'quvchilari tomonidan yaratilgan bo'lib sizga eng soʻnggi ob-havo yangiliklarini taqdim etish maqsadida ishlab chiqilgan.
+                         
+
+🔧 **Qanday ishlaydi:
+                         
+Faqat shahar nomini tugmalardan tanlng va biz darhol sizga ob-havo prognozini yuboramiz. 
+Ob-havo ma'lumtlarini...
+                         
+- bir kun 
+- uch kun 
+- besh kun
+- bir hafta
+
+...shaklida eslatma tarzida olishingiz mumkin.                                                                                            
+                         
+😊  Biz bilan qoling va ob-havo haqidagi yangiliklardan doimo xabardor bo'ling!
+                        """)
